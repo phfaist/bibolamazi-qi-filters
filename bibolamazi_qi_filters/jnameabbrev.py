@@ -79,7 +79,7 @@ class JNameAbbrevFilter(BibFilter):
         #     self.repl.append( (rx, abbrev) )
 
         # import the corresponding module
-        mod = importlib.import_module('bibolamazi_qi_jabbrev.jab.'+str(scheme))
+        mod = importlib.import_module('bibolamazi_qi_filters.jab.'+str(scheme))
         replacement_pairs = mod.__dict__['replacement_pairs']
         for k, v in replacement_pairs:
             # does nothing if k is already a re object:
