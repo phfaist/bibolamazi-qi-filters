@@ -1,0 +1,4 @@
+.DS_Store
+*~
+*.py[cdo]
+__pycache__
