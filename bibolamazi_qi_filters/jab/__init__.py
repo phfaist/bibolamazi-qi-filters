@@ -150,7 +150,7 @@ def update_replacement_pairs(replacement_pairs, new_pairs):
         k, v = x
         if k in di:
             # replace value
-            replacement_pairs[di[k]] = v
+            replacement_pairs[di[k]] = (k, v)
         else:
             # append value
             replacement_pairs.append( (k, v) )
