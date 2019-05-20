@@ -143,7 +143,9 @@ def mkvalrepl(s, dot_at_abbrev=True):
 
 def update_replacement_pairs(replacement_pairs, new_pairs):
     di = dict([(x[0], i) for i, x in enumerate(replacement_pairs)])
-    for k, v in new_pairs:
+    for x in new_pairs:
+        logger.debug("Adding pair %r", x)
+        k, v = x
         if k in di:
             # replace value
             replacement_pairs[di[k]] = v

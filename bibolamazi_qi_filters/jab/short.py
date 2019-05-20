@@ -59,7 +59,7 @@ update_replacement_pairs(replacement_pairs, [
            + conjunctions['and'] + words['Applied'] + s + words['Mathematics'] + r')|(SIAM))'
            + r'(\s|[;:,.])*'
            + words['Journal'] + s + conjunctions['on'] + words['Computing']),
-      'SIAM JoC'),
+      'SIAM JoC' ),
     ( 'Fortschritte der Physik',
       'PROP'), # Progress of Physics
     ( 'Progress of Physics',
