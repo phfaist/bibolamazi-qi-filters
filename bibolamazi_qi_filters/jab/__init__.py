@@ -1,5 +1,7 @@
 
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 sep_pat = r'(?:\.[\s~]*|[\s~]+)'
 
