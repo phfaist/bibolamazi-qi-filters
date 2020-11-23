@@ -86,7 +86,8 @@ replacement_pairs = [
     ( 'Quantum Information and Computation',
       'Qu. Inf. Comp.' ),
     ( 'Quantum',
-      'Qu.' ),
+      #'Qu.'),
+      'Quantum'),
     ( mkrxs('Quantum Information', start=r'NPJ'+s),
       'NPJ Qu. Inf.' ),
 
