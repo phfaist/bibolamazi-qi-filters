@@ -41,7 +41,7 @@ jabbrevmods = [
             os.path.join(os.path.dirname(__file__), 'jab')
     ])]
 _jabbrevmods_pairs = [ (s, i) for i, s in enumerate(jabbrevmods) ]
-JAbbrevModule = enum_class('JAbbrevModule', _jabbrevmods_pairs, default_value='default')
+JAbbrevModule = enum_class('JAbbrevModule', _jabbrevmods_pairs, default_value='defaults')
 
 
 
@@ -82,10 +82,11 @@ class JNameAbbrevFilter(BibFilter):
         #     self.repl.append( (rx, abbrev) )
 
         # import the corresponding module
-        if '.' in scheme:
-            mod = importlib.import_module(str(scheme))
+        strscheme = str(scheme)
+        if '.' in strscheme:
+            mod = importlib.import_module(strscheme)
         else:
-            mod = importlib.import_module('bibolamazi_qi_filters.jab.'+str(scheme))
+            mod = importlib.import_module('bibolamazi_qi_filters.jab.'+strscheme)
         replacement_pairs = mod.__dict__['replacement_pairs']
         for k, v in replacement_pairs:
             # does nothing if k is already a re object:

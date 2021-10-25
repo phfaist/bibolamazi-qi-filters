@@ -127,7 +127,9 @@ def mkrxs(s, flags=re.IGNORECASE, **kwargs):
         elif w in conjunctions:
             pat_parts.append(conjunctions[w])
         else:
-            raise ValueError("j abbrev scheme: word '{}' unknown".format(w))
+            # keep the word as is
+            pat_parts.append(w)
+            #raise ValueError("j abbrev scheme: word '{}' unknown".format(w))
     
     # remove last sep_parts item
     if pat_parts[-1:] == [sep_pat]:
