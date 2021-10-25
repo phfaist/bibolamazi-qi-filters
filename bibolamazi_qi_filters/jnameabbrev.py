@@ -41,7 +41,7 @@ jabbrevmods = [
             os.path.join(os.path.dirname(__file__), 'jab')
     ])]
 _jabbrevmods_pairs = [ (s, i) for i, s in enumerate(jabbrevmods) ]
-JAbbrevModule = enum_class('JAbbrevModule', _jabbrevmods_pairs, default_value='defaults')
+JAbbrevModule = enum_class('JAbbrevModule', _jabbrevmods_pairs, default_value='default')
 
 
 
