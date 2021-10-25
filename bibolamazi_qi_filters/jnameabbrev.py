@@ -58,24 +58,26 @@ class JNameAbbrevFilter(BibFilter):
     helptext = HELP_TEXT
 
     def __init__(self, scheme=JAbbrevModule('defaults'), dot_at_abbrev=True,
-                 dot_at_abbrev_cmd=r'\ '):
+                 dot_at_abbrev_cmd=r'\@'):
         r"""
         Arguments:
 
           * scheme(JAbbrevModule):   Use the given abbreviations scheme.
 
           * dot_at_abbrev(bool):   If true (the default), then abbreviations are written
-                                   e.g. as "Phys.\ Rev.\ Lett.\ " which gets the spacing
+                                   e.g. as "Phys.\@ Rev.\@ Lett.\@" which gets the spacing
                                    right in LaTeX (not end of sentence).  Set to false to
                                    keep the simple "Phys. Rev. Lett."
 
           * dot_at_abbrev_cmd:     The command to use after a dot when -dDotAtAbbrev is
-                                   set.  You can set this, e.g., to "\@".
+                                   set.  You can set this, e.g., to "\@" or any other
+                                   custom command.
 
         """
 
         self.scheme = scheme
         self.dot_at_abbrev = butils.getbool(dot_at_abbrev)
+        self.dot_at_abbrev_cmd = dot_at_abbrev_cmd
 
         self.repl = []
 
@@ -94,7 +96,11 @@ class JNameAbbrevFilter(BibFilter):
         replacement_pairs = mod.__dict__['replacement_pairs']
         for k, v in replacement_pairs:
             # does nothing if k is already a re object:
-            self.repl.append( ( jab.mkrxs(k), jab.mkvalrepl(v, dot_at_abbrev=self.dot_at_abbrev) ) )
+            self.repl.append(
+                ( jab.mkrxs(k), jab.mkvalrepl(v,
+                                              dot_at_abbrev=self.dot_at_abbrev,
+                                              dot_at_abbrev_cmd=self.dot_at_abbrev_cmd) )
+            )
 
 
         logger.debug("JNameAbbrevFilter: repl=%r", self.repl)

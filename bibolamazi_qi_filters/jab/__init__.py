@@ -129,6 +129,7 @@ def mkrxs(s, flags=re.IGNORECASE, **kwargs):
         else:
             # keep the word as is
             pat_parts.append(w)
+            pat_parts.append(sep_pat)
             #raise ValueError("j abbrev scheme: word '{}' unknown".format(w))
     
     # remove last sep_parts item
@@ -138,10 +139,10 @@ def mkrxs(s, flags=re.IGNORECASE, **kwargs):
     return mkrx("".join(pat_parts), flags=flags, **kwargs)
 
 
-def mkvalrepl(s, dot_at_abbrev=True):
+def mkvalrepl(s, dot_at_abbrev=True, dot_at_abbrev_cmd='\ '):
     # sanitize replacement value. Replace '.' by '.\@' for abbreviations
     if dot_at_abbrev:
-        s = s.replace('.', r'.\@')
+        s = s.replace('.', r'.'+dot_at_abbrev_cmd)
     return s
 
 
