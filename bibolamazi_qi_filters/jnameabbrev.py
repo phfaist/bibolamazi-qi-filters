@@ -57,16 +57,20 @@ class JNameAbbrevFilter(BibFilter):
     helpdescription = HELP_DESC
     helptext = HELP_TEXT
 
-    def __init__(self, scheme=JAbbrevModule('defaults'), dot_at_abbrev=True):
-        """
+    def __init__(self, scheme=JAbbrevModule('defaults'), dot_at_abbrev=True,
+                 dot_at_abbrev_cmd=r'\ '):
+        r"""
         Arguments:
 
           * scheme(JAbbrevModule):   Use the given abbreviations scheme.
 
           * dot_at_abbrev(bool):   If true (the default), then abbreviations are written
-                                   e.g. as "Phys.\@ Rev.\@ Lett" which gets the spacing
+                                   e.g. as "Phys.\ Rev.\ Lett.\ " which gets the spacing
                                    right in LaTeX (not end of sentence).  Set to false to
                                    keep the simple "Phys. Rev. Lett."
+
+          * dot_at_abbrev_cmd:     The command to use after a dot when -dDotAtAbbrev is
+                                   set.  You can set this, e.g., to "\@".
 
         """
 
